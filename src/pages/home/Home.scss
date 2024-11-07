@@ -1,0 +1,56 @@
+@import "../../variables.scss";
+.container-home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+.home-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+  font-family: $font-title;
+  font-size: 310px;
+  line-height: 400px;
+  overflow: hidden;
+  border-top: 3px solid black;
+  border-bottom: 12px double black;
+  & h2:nth-child(1) {
+    align-self: start;
+  }
+  & h2:nth-child(2) {
+    align-self: end;
+  }
+}
+.container-home img {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 120px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+model-viewer {
+  position: fixed;
+  top: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.95;
+  filter: blur(0.5px);
+}
