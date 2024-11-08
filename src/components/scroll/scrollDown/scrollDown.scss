@@ -1,0 +1,43 @@
+@import "../../../variables.scss";
+.scroll {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(-50%);
+  animation: showScroll 11s forwards, pulse 1.5s ease-in-out infinite 11s;
+  text-align: center;
+
+  & img {
+    height: 120px;
+  }
+  & span {
+    font-family: $font-title;
+    text-transform: uppercase;
+  }
+}
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes showScroll {
+  0% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

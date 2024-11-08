@@ -1,11 +1,14 @@
 import React from "react";
 import "./App.scss";
 import Home from "./pages/home/Home.jsx";
+import { AnimatePresence } from "framer-motion";
 function App() {
   return (
-    <div className="App">
-      <Home />
-    </div>
+    <AnimatePresence mode="wait">
+      <div className="App">
+        <Home />
+      </div>
+    </AnimatePresence>
   );
 }
 
