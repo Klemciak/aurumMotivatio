@@ -8,8 +8,9 @@
   justify-content: center;
   align-items: center;
   transform: translateY(-50%);
-  animation: showScroll 11s forwards, pulse 1.5s ease-in-out infinite 11s;
+  animation: showScroll 7s forwards, pulse 1.5s ease-in-out infinite 7s;
   text-align: center;
+  color: $color-black;
 
   & img {
     height: 120px;

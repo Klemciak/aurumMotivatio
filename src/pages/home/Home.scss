@@ -19,45 +19,44 @@
   line-height: 400px;
   overflow: hidden;
   color: $color-black;
-  & h2:nth-child(1) {
+  cursor: default;
+  & h2:nth-child(2) {
     align-self: start;
     text-shadow: 4px 4px 0px $color-gold;
+    margin-left: 40px;
   }
-  & h2:nth-child(2) {
+  & h2:nth-child(3) {
     align-self: end;
     text-shadow: 4px 4px 0px $color-silver;
-  }
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    border-top: 5px solid $color-black;
-  }
-  &::before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    border-bottom: 16px double $color-black;
+    margin-right: 40px;
   }
 }
-
+.line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transform: translateX(-50%);
+  border-top: 5px solid $color-black;
+}
+.underline {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  transform: translateX(50%);
+  border-bottom: 16px double $color-black;
+}
 .skull {
   position: fixed;
   top: -10%;
   left: 50%;
-  transform: translateX(-50%);
   height: 950px;
   width: 800px;
   & model-viewer {
-    opacity: 0.85;
-
     transition: 1s;
     &:hover {
-      opacity: 1;
+      opacity: 0.7;
     }
   }
 }
