@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Home.scss";
 import ScrollDown from "../../components/scroll/scrollDown/scrollDown";
 import { motion } from "framer-motion";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -13,7 +13,6 @@ const Home = () => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [direction, setDirection] = useState(null);
   const [cameraOrbit, setCameraOrbit] = useState("0deg 60deg auto");
-  // setCameraOrbit("60deg 90deg auto");
   let intervalId; // Zmienna do przechowywania ID interwału
 
   // Obsługa przewijania (scrolling)
@@ -26,7 +25,7 @@ const Home = () => {
           clearInterval(intervalId);
           setTimeout(() => {
             // Zatrzymuje animację obracania czaszki po przewinięciu
-            setCameraOrbit("60deg 90deg auto");
+            setCameraOrbit("30deg 70deg auto");
           }, 2000);
         }
       } else if (e.deltaY < 0) {
@@ -118,18 +117,16 @@ const Home = () => {
         initial={{ opacity: 0 }}
         transition={{ duration: 1 }}
       >
-        <Link to="/article">
-          <ScrollDown />
-        </Link>
+        <ScrollDown />
       </motion.div>
       <motion.div
-        className="skull"
+        className="home-skull"
         animate={{
           x:
             direction === "right"
-              ? `calc(-50% + 500px)`
+              ? `calc(-50% + 50%)`
               : direction === "left"
-              ? `calc(-50% + 500px)`
+              ? `calc(-50% + 50%)`
               : "-50%",
           opacity: 1,
         }}

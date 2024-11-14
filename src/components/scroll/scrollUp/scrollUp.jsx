@@ -3,7 +3,7 @@ import "./scrollUp.scss";
 import mouseUp from "../../../images/mouseUp.png";
 const scrollUp = () => {
   return (
-    <div className="scroll">
+    <div className="scrollUp">
       <span>
         scroll
         <br />

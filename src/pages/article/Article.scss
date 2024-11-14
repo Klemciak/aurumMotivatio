@@ -1,0 +1,102 @@
+@import "../../variables.scss";
+.article-home {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.article-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  top: 47%;
+  left: 10%;
+  transform: translateY(-50%);
+  height: 700px;
+  width: 650px;
+  color: $color-black;
+  h2 {
+    padding: 0 15px;
+    font-family: $font-title;
+    font-size: 50px;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    text-shadow: 2px 2px 0px $color-gold;
+    border-top: 3px solid $color-black;
+    border-bottom: 1px solid black;
+    border-radius: 15px 15px 0 0;
+    &::selection {
+      background-color: $color-black;
+      color: $color-gold;
+    }
+  }
+
+  button {
+    padding: 5px 10px;
+    font-family: $font-text;
+    font-size: 35px;
+    background-color: rgba(255, 255, 255, 0);
+    color: $color-black;
+    border: none;
+    border-bottom: 3px solid $color-black;
+    border-radius: 15px;
+    text-shadow: 2px 2px 0px $color-darkGold;
+    cursor: pointer;
+    transition: 0.5s;
+    &:hover {
+      letter-spacing: 1px;
+      padding: 5px 20px;
+      border-radius: 25px;
+    }
+    &:active {
+      scale: 0.9;
+    }
+    &::selection {
+      background-color: $color-black;
+      color: $color-gold;
+    }
+  }
+}
+.article-text .text {
+  padding: 10px 40px;
+  overflow: hidden;
+  font-family: $font-text;
+  font-size: 20px;
+  text-align: justify;
+  border-left: 3px solid $color-black;
+  border-right: 3px solid $color-black;
+  border-radius: 30px;
+  -webkit-mask-image: linear-gradient(to top, transparent, rgb(0, 0, 0) 30%);
+  mask-image: linear-gradient(to top, transparent, rgb(0, 0, 0) 30%);
+  & h3 {
+    font-family: $font-title;
+    font-size: 20px;
+    padding: 15px 0 5px;
+    text-decoration: underline;
+  }
+  &::selection {
+    background-color: $color-black;
+    color: $color-gold;
+  }
+}
+.article-skull {
+  position: fixed;
+  top: -10%;
+  left: 50%;
+  height: 950px;
+  width: 800px;
+}
+.article-popup {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+}
