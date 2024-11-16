@@ -2,19 +2,73 @@ import React, { useState, useEffect } from "react";
 import "./Article.scss";
 import ScrollDown from "../../components/scroll/scrollDown/scrollDown";
 import ScrollUp from "../../components/scroll/scrollUp/scrollUp";
-import useScrollNavigation from "../../components/scroll/scrollHook/useScrollNavigation";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const Article = () => {
-  const downRoute = "/about"; // Przykład ścieżki przy przewijaniu w dół
-  const upRoute = "/"; // Przykład ścieżki przy przewijaniu w górę
+  const navigate = useNavigate();
+  const downRoute = "/about";
+  const upRoute = "/";
 
   const [cameraOrbit, setCameraOrbit] = useState("30deg 70deg auto");
-  // Używamy naszego custom hooka z dwoma zmiennymi
-  useScrollNavigation(downRoute, upRoute);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [direction, setDirection] = useState(null);
+
+  // Obsługa przewijania (scrolling)
+  const handleScrollAttempt = (e) => {
+    console.log(e.deltaY);
+    if (!isAnimating) {
+      setIsAnimating(true);
+      if (e.deltaY > 0) {
+        setTimeout(() => {
+          setCameraOrbit("-30deg 70deg auto");
+        }, 2000);
+        setDirection("down");
+      } else if (e.deltaY < 0) {
+        setTimeout(() => {
+          setCameraOrbit("0deg 60deg auto");
+        }, 2000);
+        setDirection("up");
+      }
+    }
+  };
+
+  useEffect(() => {
+    const articleElement = document.getElementById("article-home");
+
+    articleElement?.addEventListener("wheel", handleScrollAttempt);
+
+    return () => {
+      articleElement?.removeEventListener("wheel", handleScrollAttempt);
+    };
+  }, [isAnimating]);
+
+  const handleAnimationComplete = () => {
+    if (direction === "down") {
+      navigate(downRoute, { replace: true });
+    } else if (direction === "up") {
+      navigate(upRoute, { replace: true });
+    }
+
+    setIsAnimating(false);
+    setDirection(null);
+  };
+
+  const togglePopup = () => {
+    setIsOpen((isOpen) => !isOpen);
+  };
   return (
     <>
-      <div className="article-home">
-        <div className="article-text">
+      <div className="article-home" id="article-home">
+        <motion.div
+          animate={{
+            opacity: direction ? 0 : 1,
+          }}
+          initial={{ opacity: 0 }}
+          transition={{ duration: 3 }}
+          className="article-text"
+        >
           <h2>Złoto</h2>
           <div className="text">
             <h3>Złoto: Symbol Bogactwa i Pozytywnego Wpływu na Człowieka</h3>
@@ -148,20 +202,51 @@ const Article = () => {
               podnoszenia standardów życiowych.
             </p>
           </div>
-          <button>Czytaj więcej</button>
-        </div>
-        <div className="article-skull">
+          <button onClick={togglePopup}>Czytaj więcej</button>
+        </motion.div>
+        <motion.div
+          className="article-skull"
+          animate={{
+            x:
+              direction === "down"
+                ? `calc(-100%)`
+                : direction === "up"
+                ? `calc(-50%)`
+                : "0",
+            opacity: 1,
+          }}
+          initial={{ x: "0" }}
+          transition={{ duration: 3.5 }}
+          onAnimationComplete={handleAnimationComplete}
+        >
           <model-viewer
             src="./images/compressed_skull.glb"
             alt="Model czaszki 3D"
             camera-orbit={cameraOrbit}
             style={{ width: "100%", height: "100%" }}
           />
-        </div>
+        </motion.div>
+        <motion.span
+          className="border-horizontally"
+          animate={{
+            x: direction ? "-100%" : "0%", // Jeśli direction jest różne od null, przesuwamy o -100%, w przeciwnym wypadku ustawiamy 0%
+          }}
+          initial={{ x: "120%" }} // Początkowa pozycja bez przesunięcia
+          transition={{ duration: 2 }}
+        ></motion.span>
+        <motion.span
+          className="border-vertically"
+          animate={{
+            y: direction ? "-100%" : "0%",
+          }}
+          initial={{ y: "120%" }}
+          transition={{ duration: 2 }}
+        ></motion.span>
         <ScrollUp />
         <ScrollDown />
       </div>
-      <div className="article-popup">
+
+      <div className={`article-popup ${isOpen ? "fade-in" : "fade-out"}`}>
         <h2>Złoto</h2>
         <div className="text">
           <h3>Złoto: Symbol Bogactwa i Pozytywnego Wpływu na Człowieka</h3>
@@ -293,6 +378,7 @@ const Article = () => {
             standardów życiowych.
           </p>
         </div>
+        <button onClick={togglePopup}>X</button>
       </div>
     </>
   );

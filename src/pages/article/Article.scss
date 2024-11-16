@@ -28,7 +28,7 @@
     letter-spacing: 10px;
     text-shadow: 2px 2px 0px $color-gold;
     border-top: 3px solid $color-black;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid $color-black;
     border-radius: 15px 15px 0 0;
     &::selection {
       background-color: $color-black;
@@ -79,9 +79,12 @@
     padding: 15px 0 5px;
     text-decoration: underline;
   }
-  &::selection {
-    background-color: $color-black;
-    color: $color-gold;
+  & p,
+  & h3 {
+    &::selection {
+      background-color: $color-black;
+      color: $color-gold;
+    }
   }
 }
 .article-skull {
@@ -91,12 +94,146 @@
   height: 950px;
   width: 800px;
 }
+.border-horizontally {
+  width: 100%;
+  height: 0;
+  position: absolute;
+  bottom: 70px;
+  right: 0;
+  border: 5px double $color-black;
+}
+.border-vertically {
+  height: 100%;
+  width: 0;
+  position: absolute;
+  right: 160px;
+  bottom: 0;
+  border: 5px double $color-black;
+}
 .article-popup {
-  display: none;
   position: absolute;
   top: 0;
   left: 0;
-  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
   width: 100%;
   height: 100%;
+  color: $color-gold;
+  & h2 {
+    padding: 0 15px;
+    margin-bottom: 50px;
+    font-family: $font-title;
+    font-size: 50px;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    text-shadow: 2px 2px 0px $color-black;
+    border: 4px solid $color-black;
+    border-top: none;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    &::selection {
+      background-color: $color-black;
+      color: $color-gold;
+    }
+  }
+  & button {
+    position: absolute;
+    top: 10px;
+    right: 30px;
+    width: 80px;
+    height: 80px;
+    font-size: 50px;
+    font-family: $font-text;
+    font-weight: bold;
+    border: 4px solid $color-black;
+    color: $color-gold;
+    text-shadow: 2px 2px 0px $color-black;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: 0.2s;
+    &:active {
+      scale: 0.8;
+      color: $color-darkGold;
+      background-color: $color-black;
+    }
+    &:hover {
+      scale: 1.1;
+      background-color: $color-black;
+    }
+    &::selection {
+      background-color: $color-black;
+      color: $color-gold;
+    }
+  }
+}
+
+.article-popup.fade-in {
+  display: flex;
+  animation: fadeIn 0.5s ease-out forwards;
+  overflow: hidden;
+}
+
+.article-popup.fade-out {
+  display: none;
+  animation: fadeOut 0.5s ease-in forwards;
+  overflow: hidden;
+}
+
+@keyframes fadeIn {
+  from {
+    display: none;
+    opacity: 0;
+  }
+  to {
+    display: flex;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    display: flex;
+    opacity: 1;
+  }
+  to {
+    display: none;
+    opacity: 0;
+  }
+}
+.article-popup .text {
+  width: 1000px;
+  padding: 10px 30px;
+  overflow-y: scroll;
+  margin-bottom: 50px;
+  border: 4px solid $color-black;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #f1e0bae6 97%, rgb(0, 0, 0) 99%);
+  color: $color-black;
+  scrollbar-width: auto;
+  scrollbar-color: $color-gold rgba(0, 0, 0, 0);
+
+  & h3 {
+    font-family: $font-title;
+    color: $color-darkGold;
+    text-shadow: 2px 2px 0px $color-black;
+    font-size: 35px;
+    text-decoration: underline;
+    &::selection {
+      background-color: $color-black;
+      color: $color-gold;
+    }
+  }
+  & p {
+    font-family: $font-text;
+    font-weight: bold;
+    font-size: 25px;
+    padding: 7px 0 35px;
+    &::selection {
+      background-color: $color-black;
+      color: $color-gold;
+    }
+  }
 }

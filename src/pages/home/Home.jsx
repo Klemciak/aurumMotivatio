@@ -8,7 +8,6 @@ const Home = () => {
   const navigate = useNavigate();
 
   const downRoute = "/article";
-  const upRoute = "/about";
 
   const [isAnimating, setIsAnimating] = useState(false);
   const [direction, setDirection] = useState(null);
@@ -20,7 +19,7 @@ const Home = () => {
     if (!isAnimating) {
       setIsAnimating(true);
       if (e.deltaY > 0) {
-        setDirection("right");
+        setDirection("down");
         if (intervalId) {
           clearInterval(intervalId);
           setTimeout(() => {
@@ -28,8 +27,6 @@ const Home = () => {
             setCameraOrbit("30deg 70deg auto");
           }, 2000);
         }
-      } else if (e.deltaY < 0) {
-        setDirection("left"); //---------------------------------
       }
     }
   };
@@ -41,10 +38,8 @@ const Home = () => {
 
   // Funkcja uruchamiana po zakończeniu animacji
   const handleAnimationComplete = () => {
-    if (direction === "right") {
+    if (direction === "down") {
       navigate(downRoute, { replace: true });
-    } else if (direction === "left") {
-      navigate(upRoute, { replace: true }); //----------------------------
     }
 
     setIsAnimating(false);
@@ -122,12 +117,7 @@ const Home = () => {
       <motion.div
         className="home-skull"
         animate={{
-          x:
-            direction === "right"
-              ? `calc(-50% + 50%)`
-              : direction === "left"
-              ? `calc(-50% + 50%)`
-              : "-50%",
+          x: direction === "down" ? `calc(-50% + 50%)` : "-50%",
           opacity: 1,
         }}
         initial={{ x: "-50%" }}
