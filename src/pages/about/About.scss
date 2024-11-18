@@ -1,0 +1,125 @@
+@import "../../variables.scss";
+.about {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.about-slider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  position: absolute;
+  top: 47%;
+  right: 12%;
+  transform: translateY(-50%);
+  height: 600px;
+  width: 650px;
+
+  & h2 {
+    padding: 0 15px 0 20px;
+    margin-bottom: 10px;
+    font-family: $font-title;
+    font-size: 50px;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    text-shadow: 2px 2px 0px $color-gold;
+    border-top: 3px solid $color-black;
+    border-bottom: 1px solid $color-black;
+    border-radius: 15px 15px 0 0;
+    color: $color-black;
+    &::selection {
+      background-color: $color-black;
+      color: $color-gold;
+    }
+  }
+}
+.slider {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  & button {
+    width: 100px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    & img {
+      width: 100%;
+      padding: 5px;
+    }
+    &:hover {
+      scale: 1.1;
+    }
+    &:active {
+      scale: 0.9;
+    }
+  }
+}
+.slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+  text-align: justify;
+  width: 100%;
+}
+.about-skull {
+  position: fixed;
+  top: -10%;
+  left: 50%;
+  transform: translateX(-100%);
+  height: 950px;
+  width: 800px;
+  z-index: 50;
+}
+.slide1,
+.slide2,
+.slide3,
+.slide4 {
+  position: relative;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.slide1 {
+  background-image: url(../../images/ingots.png);
+}
+
+.slide2 {
+  background-image: url(../../images/nugget.png);
+}
+
+.slide3 {
+  background-image: url(../../images/padlock.png);
+}
+
+.slide4 {
+  background-image: url(../../images/rings.png);
+}
+.about-border-horizontally {
+  width: 100%;
+  height: 0;
+  position: absolute;
+  top: 70px;
+  right: 0;
+  border: 5px double $color-black;
+}
+.about-border-vertically {
+  height: 100%;
+  width: 0;
+  position: absolute;
+  left: 160px;
+  bottom: 0;
+  border: 5px double $color-black;
+}

@@ -16,9 +16,9 @@ const Home = () => {
 
   // Obsługa przewijania (scrolling)
   const handleScrollAttempt = (e) => {
-    if (!isAnimating) {
-      setIsAnimating(true);
-      if (e.deltaY > 0) {
+    if (e.deltaY > 0) {
+      if (!isAnimating) {
+        setIsAnimating(true);
         setDirection("down");
         if (intervalId) {
           clearInterval(intervalId);

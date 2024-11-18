@@ -1,5 +1,5 @@
 @import "../../variables.scss";
-.article-home {
+.article {
   position: relative;
   display: flex;
   align-items: center;
@@ -21,7 +21,7 @@
   width: 650px;
   color: $color-black;
   h2 {
-    padding: 0 15px;
+    padding: 0 15px 0 25px;
     font-family: $font-title;
     font-size: 50px;
     text-transform: uppercase;
@@ -93,8 +93,9 @@
   left: 50%;
   height: 950px;
   width: 800px;
+  z-index: 50;
 }
-.border-horizontally {
+.article-border-horizontally {
   width: 100%;
   height: 0;
   position: absolute;
@@ -102,7 +103,7 @@
   right: 0;
   border: 5px double $color-black;
 }
-.border-vertically {
+.article-border-vertically {
   height: 100%;
   width: 0;
   position: absolute;
@@ -123,7 +124,7 @@
   height: 100%;
   color: $color-gold;
   & h2 {
-    padding: 0 15px;
+    padding: 0 15px 0 25px;
     margin-bottom: 50px;
     font-family: $font-title;
     font-size: 50px;

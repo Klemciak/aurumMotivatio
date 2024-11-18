@@ -35,7 +35,7 @@ const Article = () => {
   };
 
   useEffect(() => {
-    const articleElement = document.getElementById("article-home");
+    const articleElement = document.getElementById("article");
 
     articleElement?.addEventListener("wheel", handleScrollAttempt);
 
@@ -60,7 +60,7 @@ const Article = () => {
   };
   return (
     <>
-      <div className="article-home" id="article-home">
+      <div className="article" id="article">
         <motion.div
           animate={{
             opacity: direction ? 0 : 1,
@@ -209,9 +209,9 @@ const Article = () => {
           animate={{
             x:
               direction === "down"
-                ? `calc(-100%)`
+                ? `-100%`
                 : direction === "up"
-                ? `calc(-50%)`
+                ? `-50%`
                 : "0",
             opacity: 1,
           }}
@@ -227,7 +227,7 @@ const Article = () => {
           />
         </motion.div>
         <motion.span
-          className="border-horizontally"
+          className="article-border-horizontally"
           animate={{
             x: direction ? "-100%" : "0%", // Jeśli direction jest różne od null, przesuwamy o -100%, w przeciwnym wypadku ustawiamy 0%
           }}
@@ -235,7 +235,7 @@ const Article = () => {
           transition={{ duration: 2 }}
         ></motion.span>
         <motion.span
-          className="border-vertically"
+          className="article-border-vertically"
           animate={{
             y: direction ? "-100%" : "0%",
           }}
