@@ -1,0 +1,159 @@
+@import "../../variables.scss";
+.courses {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.courses-title {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px 10px 30px;
+  font-size: 70px;
+  font-family: $font-title;
+  letter-spacing: 10px;
+  margin-left: 10px;
+  text-transform: uppercase;
+  border-top: 3px solid $color-black;
+  border-bottom: 3px solid $color-black;
+  border-radius: 50px 10px;
+}
+.courses-offered {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 11;
+}
+.offered-7,
+.offered-30 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 500px;
+  height: 700px;
+  border: none;
+  border-left: 3px solid $color-black;
+  border-right: 3px solid $color-black;
+  border-radius: 50px;
+  background-color: rgba(0, 0, 0, 0.2);
+  & h3 {
+    padding: 10px 20px;
+    font-family: $font-title;
+    font-size: 30px;
+    border-bottom: 2px solid $color-black;
+    border-radius: 0 0 25px 25px;
+    & span {
+      font-family: $font-text;
+      font-size: 23px;
+    }
+  }
+  & ul {
+    list-style: none;
+    width: 100%;
+    padding: 25px;
+  }
+
+  .course-item {
+    border-bottom: 1px solid $color-black;
+    padding: 8px 0;
+    border-radius: 5px;
+    &:nth-child(1) {
+      border-top: 1px solid $color-black;
+    }
+
+    .course-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: 0.3s;
+      &:hover,
+      &:hover > button {
+        color: $color-gold;
+        text-shadow: 2px 2px 0 $color-black;
+      }
+      span {
+        font-weight: bold;
+        font-size: 20px;
+        font-family: $font-title;
+      }
+
+      .toggle-btn {
+        font-size: 25px;
+        line-height: 20px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: $color-black;
+      }
+    }
+
+    .course-description {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: all 0.5s ease;
+      font-family: $font-text;
+      &.show {
+        max-height: 100px;
+        opacity: 1;
+        margin-top: 10px;
+        font-size: 18px;
+        color: $color-black;
+        font-weight: bold;
+      }
+    }
+  }
+  & .join {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    & button {
+      padding: 15px 40px;
+      font-family: $font-text;
+      font-weight: bold;
+      font-size: 30px;
+      letter-spacing: 7px;
+      text-transform: uppercase;
+      border: none;
+      border-top: 3px solid $color-black;
+      border-bottom: 3px solid $color-black;
+      border-radius: 50px;
+      background-color: rgba(0, 0, 0, 0);
+      transition: 0.5s;
+      &:hover {
+        letter-spacing: 12px;
+      }
+      &:active {
+        scale: 0.9;
+        letter-spacing: 8px;
+      }
+    }
+    & .price {
+      padding: 0 25px;
+      margin: 20px 0;
+      font-family: $font-text;
+      font-size: 30px;
+      font-weight: bold;
+      border-top: 2px solid $color-black;
+      border-radius: 15px 15px 0 0;
+    }
+  }
+}
+.courses-skull {
+  position: fixed;
+  top: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 950px;
+  width: 800px;
+}

@@ -22,16 +22,18 @@
 
   & h2 {
     padding: 0 15px 0 20px;
-    margin-bottom: 10px;
-    font-family: $font-title;
+    font-family: $font-text;
     font-size: 50px;
     text-transform: uppercase;
     letter-spacing: 10px;
-    text-shadow: 2px 2px 0px $color-gold;
+
     border-top: 3px solid $color-black;
-    border-bottom: 1px solid $color-black;
+    border-left: 1px solid $color-black;
+    border-right: 1px solid $color-black;
     border-radius: 15px 15px 0 0;
+    background-color: rgba(241, 224, 186, 0.6);
     color: $color-black;
+    text-shadow: 2px 2px 0px $color-darkGold;
     &::selection {
       background-color: $color-black;
       color: $color-gold;

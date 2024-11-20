@@ -18,14 +18,17 @@ const Article = () => {
   // Obsługa przewijania (scrolling)
   const handleScrollAttempt = (e) => {
     console.log(e.deltaY);
-    if (!isAnimating) {
-      setIsAnimating(true);
-      if (e.deltaY > 0) {
+    if (e.deltaY > 0) {
+      if (!isAnimating) {
+        setIsAnimating(true);
         setTimeout(() => {
           setCameraOrbit("-30deg 70deg auto");
         }, 2000);
         setDirection("down");
-      } else if (e.deltaY < 0) {
+      }
+    } else if (e.deltaY < 0) {
+      if (!isAnimating) {
+        setIsAnimating(true);
         setTimeout(() => {
           setCameraOrbit("0deg 60deg auto");
         }, 2000);
@@ -242,8 +245,17 @@ const Article = () => {
           initial={{ y: "120%" }}
           transition={{ duration: 2 }}
         ></motion.span>
-        <ScrollUp />
-        <ScrollDown />
+
+        <motion.div
+          animate={{
+            opacity: direction ? 0 : 1,
+          }}
+          initial={{ opacity: 0 }}
+          transition={{ duration: 1 }}
+        >
+          <ScrollUp />
+          <ScrollDown />
+        </motion.div>
       </div>
 
       <div className={`article-popup ${isOpen ? "fade-in" : "fade-out"}`}>

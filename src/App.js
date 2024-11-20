@@ -4,6 +4,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "./pages/home/Home.jsx";
 import Article from "./pages/article/Article.jsx";
 import About from "./pages/about/About.jsx";
+import Courses from "./pages/courses/Courses.jsx";
 import { AnimatePresence } from "framer-motion";
 function App() {
   const location = useLocation();
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/article" element={<Article />} />
           <Route path="/about" element={<About />} />
+          <Route path="/courses" element={<Courses />} />
         </Routes>
       </AnimatePresence>
     </div>
