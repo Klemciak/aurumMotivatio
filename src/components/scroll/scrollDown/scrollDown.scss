@@ -42,3 +42,8 @@
     opacity: 1;
   }
 }
+@media (max-width: 700px) {
+  .scrollDown {
+    scale: 0.7;
+  }
+}

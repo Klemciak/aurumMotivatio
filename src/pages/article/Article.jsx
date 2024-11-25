@@ -15,23 +15,55 @@ const Article = () => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [direction, setDirection] = useState(null);
 
+  //-------animacja czaszki---------
+  let currentAngle = 30;
+  const targetAngleDown = -30;
+  const targetAngleUp = 0;
+
+  let currentVerticalAngle = 70;
+  const targetVerticalAngleUp = 60;
+  let intervalHorizontal, intervalVertical;
+  //-------animacja czaszki---------
   // Obsługa przewijania (scrolling)
   const handleScrollAttempt = (e) => {
     console.log(e.deltaY);
     if (e.deltaY > 0) {
       if (!isAnimating) {
         setIsAnimating(true);
-        setTimeout(() => {
-          setCameraOrbit("-30deg 70deg auto");
-        }, 2000);
+        intervalHorizontal = setInterval(() => {
+          if (currentAngle > targetAngleDown) {
+            currentAngle += -1; // Zwiększamy kąt poziomy
+            setCameraOrbit(`${currentAngle}deg 70deg auto`);
+          } else {
+            clearInterval(intervalHorizontal); // Zatrzymujemy animację poziomą po osiągnięciu kąta 30
+          }
+        }, 50);
+
         setDirection("down");
       }
     } else if (e.deltaY < 0) {
       if (!isAnimating) {
         setIsAnimating(true);
-        setTimeout(() => {
-          setCameraOrbit("0deg 60deg auto");
-        }, 2000);
+        intervalHorizontal = setInterval(() => {
+          if (currentAngle > targetAngleUp) {
+            currentAngle += -1; // Zwiększamy kąt poziomy
+            setCameraOrbit(
+              `${currentAngle}deg ${currentVerticalAngle}deg auto`
+            );
+          } else {
+            clearInterval(intervalHorizontal); // Zatrzymujemy animację poziomą po osiągnięciu kąta 30
+          }
+        }, 100);
+        intervalVertical = setInterval(() => {
+          if (currentVerticalAngle > targetVerticalAngleUp) {
+            currentVerticalAngle += -0.5; // Zwiększamy kąt poziomy
+            setCameraOrbit(
+              `${currentAngle}deg ${currentVerticalAngle}deg auto`
+            );
+          } else {
+            clearInterval(intervalVertical); // Zatrzymujemy animację poziomą po osiągnięciu kąta 30
+          }
+        }, 100);
         setDirection("up");
       }
     }
@@ -219,7 +251,7 @@ const Article = () => {
             opacity: 1,
           }}
           initial={{ x: "0" }}
-          transition={{ duration: 3.5 }}
+          transition={{ duration: 3.5, ease: "easeInOut" }}
           onAnimationComplete={handleAnimationComplete}
         >
           <model-viewer

@@ -1,5 +1,6 @@
 @import "../../variables.scss";
 .container-home {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,18 +13,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   width: 100%;
+  height: 100%;
   padding: 20px 0;
   font-family: $font-title;
-  font-size: 310px;
   line-height: 400px;
   color: $color-black;
   cursor: default;
+  filter: drop-shadow(8px 12px 7px rgba(0, 0, 0, 0.5));
   & h2:nth-child(2) {
     align-self: start;
     text-shadow: 4px 4px 0px $color-gold;
     margin-left: 60px;
+    font-size: 420px;
     &::selection {
       background-color: $color-black;
       color: $color-gold;
@@ -33,6 +36,7 @@
     align-self: end;
     text-shadow: 4px 4px 0px $color-darkGold;
     margin-right: 60px;
+    font-size: 420px;
     &::selection {
       background-color: $color-black;
       color: $color-gold;
@@ -41,7 +45,7 @@
 }
 .line {
   position: absolute;
-  top: 0;
+  top: 3%;
   left: 0;
   width: 100%;
   transform: translateX(-50%);
@@ -49,17 +53,173 @@
 }
 .underline {
   position: absolute;
-  bottom: 0;
+  bottom: 3%;
   right: 0;
   width: 100%;
   transform: translateX(50%);
   border-bottom: 16px double $color-black;
 }
 .home-skull {
-  position: fixed;
+  position: absolute;
   top: -10%;
   left: 50%;
-  height: 950px;
+  height: 100%;
   width: 800px;
   z-index: 50;
+  filter: drop-shadow(8px 12px 5px rgba(0, 0, 0, 0.5));
+  @media (max-width: 1440px) {
+    width: 750px;
+  }
+  @media (max-width: 1370px) {
+    width: 700px;
+  }
+  @media (max-width: 1270px) {
+    width: 650px;
+  }
+  @media (max-width: 1190px) {
+    width: 600px;
+  }
+  @media (max-width: 1100px) {
+    width: 550px;
+  }
+  @media (max-width: 1024px) {
+    width: 470px;
+  }
+  @media (max-width: 900px) {
+    width: 400px;
+  }
+  @media (max-width: 785px) {
+    display: none;
+  }
+}
+
+@media (max-width: 1600px) and (max-height: 1080px) {
+  .home-title {
+    & h2:nth-child(3) {
+      font-size: 380px;
+    }
+  }
+}
+@media (max-width: 1360px) and (max-height: 1080px) {
+  .home-title {
+    & h2:nth-child(3) {
+      font-size: 300px;
+    }
+  }
+}
+
+@media (max-width: 1110px) and (max-height: 1080px) {
+  .home-title {
+    & h2:nth-child(2) {
+      font-size: 380px;
+    }
+    & h2:nth-child(3) {
+      font-size: 250px;
+    }
+  }
+}
+@media (max-width: 930px) and (max-height: 1080px) {
+  .home-title {
+    line-height: 300px;
+    & h2:nth-child(2) {
+      font-size: 340px;
+      margin-left: 10px;
+    }
+    & h2:nth-child(3) {
+      font-size: 220px;
+      margin-right: 10px;
+    }
+  }
+}
+@media (max-width: 785px) and (max-height: 1080px) {
+  .home-title {
+    justify-content: space-around;
+    writing-mode: vertical-rl; /* lub vertical-lr */
+    text-orientation: upright;
+    line-height: 250px;
+    & h2:nth-child(2) {
+      font-size: 130px;
+    }
+    & h2:nth-child(3) {
+      font-size: 70px;
+      align-self: center;
+    }
+  }
+}
+@media (max-width: 580px) and (max-height: 1080px) {
+  .home-title {
+    & h2:nth-child(2) {
+      font-size: 96px;
+      width: 20px;
+    }
+    & h2:nth-child(3) {
+      font-size: 55px;
+    }
+  }
+}
+
+@media (max-width: 1600px) and (max-height: 660px) {
+  .home-title {
+    justify-content: center;
+    line-height: 250px;
+    writing-mode: horizontal-tb;
+    & h2:nth-child(2) {
+      font-size: 380px;
+    }
+    & h2:nth-child(3) {
+      font-size: 250px;
+      margin-right: 70px;
+    }
+  }
+}
+@media (max-width: 1600px) and (max-height: 580px) {
+  .home-title {
+    justify-content: center;
+    line-height: 250px;
+
+    & h2:nth-child(2) {
+      font-size: 280px;
+    }
+    & h2:nth-child(3) {
+      font-size: 200px;
+    }
+  }
+}
+
+@media (max-width: 1600px) and (max-height: 480px) {
+  .home-title {
+    justify-content: center;
+    line-height: 80px;
+
+    & h2:nth-child(2) {
+      font-size: 220px;
+    }
+    & h2:nth-child(3) {
+      font-size: 150px;
+    }
+  }
+}
+@media (max-width: 1600px) and (max-height: 420px) {
+  .home-title {
+    line-height: 150px;
+
+    & h2:nth-child(2) {
+      font-size: 150px;
+      margin: 0;
+    }
+    & h2:nth-child(3) {
+      font-size: 150px;
+    }
+  }
+}
+@media (max-width: 1600px) and (max-height: 360px) {
+  .home-title {
+    & h2:nth-child(2) {
+      font-size: 120px;
+      margin: 0;
+    }
+    & h2:nth-child(3) {
+      font-size: 100px;
+    }
+  }
 }

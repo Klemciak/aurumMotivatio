@@ -88,12 +88,39 @@
   }
 }
 .article-skull {
-  position: fixed;
+  position: absolute;
   top: -10%;
   left: 50%;
-  height: 950px;
+  height: 100%;
   width: 800px;
+  z-index: 10;
+  filter: drop-shadow(8px 12px 5px rgba(0, 0, 0, 0.5));
+  @media (max-width: 1440px) {
+    width: 750px;
+  }
+  @media (max-width: 1370px) {
+    width: 700px;
+  }
+  @media (max-width: 1270px) {
+    width: 650px;
+  }
+  @media (max-width: 1190px) {
+    width: 600px;
+  }
+  @media (max-width: 1100px) {
+    width: 550px;
+  }
+  @media (max-width: 1024px) {
+    width: 470px;
+  }
+  @media (max-width: 900px) {
+    width: 400px;
+  }
+  @media (max-width: 785px) {
+    display: none;
+  }
 }
+
 .article-border-horizontally {
   width: 100%;
   height: 0;

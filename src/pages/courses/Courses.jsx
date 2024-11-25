@@ -16,6 +16,14 @@ const Courses = () => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [direction, setDirection] = useState(null);
   const [lookEffect, setLookEffect] = useState(true);
+
+  let currentAngle = 0;
+  const targetAngleUp = -30;
+
+  let currentVerticalAngle = 65;
+  const targetVerticalAngleUp = 70;
+  let intervalHorizontal, intervalVertical;
+
   // Obsługa przewijania (scrolling)
   const handleScrollAttempt = (e) => {
     console.log(e.deltaY);
@@ -24,9 +32,27 @@ const Courses = () => {
       setLookEffect(false);
       if (!isAnimating) {
         setIsAnimating(true);
-        setTimeout(() => {
-          setCameraOrbit("-30deg 70deg auto");
-        }, 2000);
+        intervalHorizontal = setInterval(() => {
+          if (currentAngle > targetAngleUp) {
+            currentAngle += -1; // Zwiększamy kąt poziomy
+            setCameraOrbit(
+              `${currentAngle}deg ${currentVerticalAngle}deg auto`
+            );
+          } else {
+            clearInterval(intervalHorizontal); // Zatrzymujemy animację poziomą po osiągnięciu kąta 30
+          }
+        }, 100);
+        intervalVertical = setInterval(() => {
+          if (currentVerticalAngle < targetVerticalAngleUp) {
+            currentVerticalAngle += 0.5; // Zwiększamy kąt poziomy
+            setCameraOrbit(
+              `${currentAngle}deg ${currentVerticalAngle}deg auto`
+            );
+          } else {
+            clearInterval(intervalVertical); // Zatrzymujemy animację poziomą po osiągnięciu kąta 30
+          }
+        }, 100);
+
         setDirection("up");
       }
     }
@@ -271,7 +297,7 @@ const Courses = () => {
           opacity: 1,
         }}
         initial={{ x: "-50%" }}
-        transition={{ duration: 3.5 }}
+        transition={{ duration: 3.5, ease: "easeInOut" }}
         onAnimationComplete={handleAnimationComplete}
       >
         <model-viewer
