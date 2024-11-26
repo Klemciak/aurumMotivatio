@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import "./Courses.scss";
-import ScrollUp from "../../components/scroll/scrollUp/scrollUp";
+import ScrollUp from "../../components/scroll/scrollUpDown/scrollUp";
 const Courses = () => {
   const [cameraOrbit, setCameraOrbit] = useState("0deg 65deg auto");
   const [expandedIndex7, setExpandedIndex7] = useState(null);

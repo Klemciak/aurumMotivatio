@@ -1,5 +1,5 @@
 import React from "react";
-import "./scrollDown.scss";
+import "./scrollUpDown.scss";
 import mouseDown from "../../../images/mouseDown.png";
 const scrollDown = () => {
   return (

@@ -65,6 +65,7 @@
     border-bottom: 1px solid $color-black;
     padding: 8px 0;
     border-radius: 5px;
+
     &:nth-child(1) {
       border-top: 1px solid $color-black;
     }
@@ -154,9 +155,9 @@
   top: -10%;
   left: 50%;
   transform: translateX(-50%);
-  height: 950px;
+  height: 100%;
   width: 800px;
-  filter: drop-shadow(8px 12px 5px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(8px 12px 5px rgba(0, 0, 0, 0.7));
   @media (max-width: 1440px) {
     width: 750px;
   }
@@ -179,6 +180,6 @@
     width: 400px;
   }
   @media (max-width: 785px) {
-    display: none;
+    z-index: -10;
   }
 }

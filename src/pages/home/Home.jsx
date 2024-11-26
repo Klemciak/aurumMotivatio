@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Home.scss";
-import ScrollDown from "../../components/scroll/scrollDown/scrollDown";
+import ScrollDown from "../../components/scroll/scrollUpDown/scrollDown";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
@@ -21,10 +21,6 @@ const Home = () => {
         setDirection("down");
         if (intervalId) {
           clearInterval(intervalId);
-          setTimeout(() => {
-            // Zatrzymuje animację obracania czaszki po przewinięciu
-            setCameraOrbit("30deg 70deg auto");
-          }, 2000);
         }
       }
     }
@@ -116,7 +112,7 @@ const Home = () => {
 
         <motion.h2
           animate={{
-            x: direction ? "-110%" : "0%", // Jeśli direction jest różne od null, przesuwamy o -100%, w przeciwnym wypadku ustawiamy 0%
+            x: direction ? "-130%" : "0%", // Jeśli direction jest różne od null, przesuwamy o -100%, w przeciwnym wypadku ustawiamy 0%
             scale: 1,
           }}
           initial={{ scale: 0.1, x: "70%" }} // Początkowa pozycja bez przesunięcia
@@ -126,7 +122,7 @@ const Home = () => {
         </motion.h2>
         <motion.h2
           animate={{
-            x: direction ? "110%" : "0%", // Jeśli direction jest różne od null, przesuwamy o -100%, w przeciwnym wypadku ustawiamy 0%
+            x: direction ? "130%" : "0%", // Jeśli direction jest różne od null, przesuwamy o -100%, w przeciwnym wypadku ustawiamy 0%
             scale: 1,
           }}
           initial={{ scale: 0.1, x: "-70%" }} // Początkowa pozycja bez przesunięcia

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Article.scss";
-import ScrollDown from "../../components/scroll/scrollDown/scrollDown";
-import ScrollUp from "../../components/scroll/scrollUp/scrollUp";
+import ScrollDown from "../../components/scroll/scrollUpDown/scrollDown";
+import ScrollUp from "../../components/scroll/scrollUpDown/scrollUp";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
