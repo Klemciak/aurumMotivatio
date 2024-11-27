@@ -9,7 +9,6 @@ const Courses = () => {
   const [expandedIndex30, setExpandedIndex30] = useState(null);
 
   //======== skull
-  //======== skull
   const navigate = useNavigate();
   const upRoute = "/about";
 
@@ -24,48 +23,59 @@ const Courses = () => {
   const targetVerticalAngleUp = 70;
   let intervalHorizontal, intervalVertical;
 
+  // Zmienna do przechowywania początkowej pozycji dotyku
+  let touchStartY = 0;
+
   // Obsługa przewijania (scrolling)
   const handleScrollAttempt = (e) => {
-    console.log(e.deltaY);
-
-    if (e.deltaY < 0) {
+    if (e.deltaY < 0 && !isAnimating) {
       setLookEffect(false);
-      if (!isAnimating) {
-        setIsAnimating(true);
-        intervalHorizontal = setInterval(() => {
-          if (currentAngle > targetAngleUp) {
-            currentAngle += -1; // Zwiększamy kąt poziomy
-            setCameraOrbit(
-              `${currentAngle}deg ${currentVerticalAngle}deg auto`
-            );
-          } else {
-            clearInterval(intervalHorizontal); // Zatrzymujemy animację poziomą po osiągnięciu kąta 30
-          }
-        }, 100);
-        intervalVertical = setInterval(() => {
-          if (currentVerticalAngle < targetVerticalAngleUp) {
-            currentVerticalAngle += 0.5; // Zwiększamy kąt poziomy
-            setCameraOrbit(
-              `${currentAngle}deg ${currentVerticalAngle}deg auto`
-            );
-          } else {
-            clearInterval(intervalVertical); // Zatrzymujemy animację poziomą po osiągnięciu kąta 30
-          }
-        }, 100);
-
-        setDirection("up");
-      }
+      startAnimation("up");
     }
   };
 
-  useEffect(() => {
-    window.addEventListener("wheel", handleScrollAttempt);
+  // Obsługa dotyku (swipe)
+  const handleTouchStart = (e) => {
+    touchStartY = e.touches[0].clientY; // Początkowa pozycja dotyku
+  };
 
-    return () => {
-      window.removeEventListener("wheel", handleScrollAttempt);
-    };
-  }, [isAnimating]);
+  const handleTouchMove = (e) => {
+    const touchEndY = e.touches[0].clientY;
 
+    // Swipe w górę
+    if (touchEndY - touchStartY > 50 && !isAnimating) {
+      setLookEffect(false);
+      startAnimation("up");
+    }
+  };
+
+  // Funkcja rozpoczynająca animację
+  const startAnimation = (dir) => {
+    setIsAnimating(true);
+    setDirection(dir);
+
+    if (dir === "up") {
+      intervalHorizontal = setInterval(() => {
+        if (currentAngle > targetAngleUp) {
+          currentAngle += -1; // Zmniejszamy kąt poziomy
+          setCameraOrbit(`${currentAngle}deg ${currentVerticalAngle}deg auto`);
+        } else {
+          clearInterval(intervalHorizontal);
+        }
+      }, 100);
+
+      intervalVertical = setInterval(() => {
+        if (currentVerticalAngle < targetVerticalAngleUp) {
+          currentVerticalAngle += 0.5; // Zwiększamy kąt pionowy
+          setCameraOrbit(`${currentAngle}deg ${currentVerticalAngle}deg auto`);
+        } else {
+          clearInterval(intervalVertical);
+        }
+      }, 100);
+    }
+  };
+
+  // Funkcja wykonywana po zakończeniu animacji
   const handleAnimationComplete = () => {
     if (direction === "up") {
       navigate(upRoute, { replace: true });
@@ -75,7 +85,19 @@ const Courses = () => {
     setDirection(null);
   };
 
-  /// dodatek
+  // Nasłuchiwanie zdarzeń scrolla i swipe
+  useEffect(() => {
+    window.addEventListener("wheel", handleScrollAttempt);
+    window.addEventListener("touchstart", handleTouchStart);
+    window.addEventListener("touchmove", handleTouchMove);
+
+    return () => {
+      window.removeEventListener("wheel", handleScrollAttempt);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
+    };
+  }, [isAnimating]);
+
   /// dodatek
   const look7 = () => {
     setCameraOrbit("30deg 60deg auto");
@@ -109,10 +131,6 @@ const Courses = () => {
       hoverCourse30?.removeEventListener("mouseout", resetCamera);
     };
   });
-  /// dodatek
-  /// dodatek
-  //======== skull
-  //======== skull
 
   const toggleExpand7 = (index) => {
     setExpandedIndex7((prev) => (prev === index ? null : index));
