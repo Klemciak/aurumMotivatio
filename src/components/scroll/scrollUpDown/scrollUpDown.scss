@@ -51,6 +51,12 @@
   .scrollDown {
     scale: 0.9;
   }
+  .scrollUp {
+    top: 10%;
+  }
+  .scrollDown {
+    bottom: -100%;
+  }
 }
 @media (max-width: 860px), (max-height: 700px) {
   .scrollUp,
@@ -62,13 +68,5 @@
   .scrollUp,
   .scrollDown {
     scale: 0.7;
-  }
-}
-@media (max-width: 550px), (max-height: 600px) {
-  .scrollUp {
-    top: 10%;
-  }
-  .scrollDown {
-    bottom: -100%;
   }
 }

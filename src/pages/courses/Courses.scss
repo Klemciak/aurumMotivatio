@@ -179,7 +179,25 @@
     width: 400px;
   }
   @media (max-width: 785px) {
-    z-index: -10;
+    width: 380px;
+  }
+  @media (max-width: 710px) {
+    width: 360px;
+  }
+  @media (max-width: 570px) {
+    width: 330px;
+  }
+  @media (max-width: 490px) {
+    width: 250px;
+  }
+  @media (max-width: 400px) {
+    width: 220px;
+  }
+  @media (max-width: 340px) {
+    width: 200px;
+  }
+  @media (max-width: 290px) {
+    width: 160px;
   }
 }
 @media (max-width: 1700px), (max-height: 860px) {
