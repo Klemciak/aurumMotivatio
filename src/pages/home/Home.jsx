@@ -13,6 +13,10 @@ const Home = () => {
   const [direction, setDirection] = useState(null);
   const [cameraOrbit, setCameraOrbit] = useState("0deg 60deg auto");
   let intervalId; // Zmienna do przechowywania ID interwału
+
+  // Zmienna do przechowywania pozycji startowej dotyku
+  let touchStartY = 0;
+
   // Obsługa przewijania (scrolling)
   const handleScrollAttempt = (e) => {
     if (e.deltaY > 0) {
@@ -26,10 +30,21 @@ const Home = () => {
     }
   };
 
-  useEffect(() => {
-    window.addEventListener("wheel", handleScrollAttempt);
-    return () => window.removeEventListener("wheel", handleScrollAttempt);
-  }, [isAnimating]);
+  // Obsługa dotyku (swipe)
+  const handleTouchStart = (e) => {
+    // Zapisujemy początkową pozycję dotyku
+    touchStartY = e.touches[0].clientY;
+  };
+
+  const handleTouchMove = (e) => {
+    const touchEndY = e.touches[0].clientY;
+
+    // Jeśli użytkownik przesunął palcem w dół (ruch w dół ma ujemną różnicę Y)
+    if (touchStartY - touchEndY > 50 && !isAnimating) {
+      setIsAnimating(true);
+      setDirection("down");
+    }
+  };
 
   // Funkcja uruchamiana po zakończeniu animacji
   const handleAnimationComplete = () => {
@@ -97,6 +112,20 @@ const Home = () => {
       clearInterval(intervalVertical);
     };
   }, [isAnimating]); // Zależność od isAnimating
+
+  // Dodajemy nasłuchiwanie scrolla i swipe
+  useEffect(() => {
+    window.addEventListener("wheel", handleScrollAttempt);
+    window.addEventListener("touchstart", handleTouchStart);
+    window.addEventListener("touchmove", handleTouchMove);
+
+    return () => {
+      window.removeEventListener("wheel", handleScrollAttempt);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
+    };
+  }, [isAnimating]);
+
   return (
     <div className="container-home">
       <div className="home-title">

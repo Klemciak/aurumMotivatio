@@ -13,7 +13,6 @@ import right from "../../images/mini-images/slideRight.png";
 const About = () => {
   const [cameraOrbit, setCameraOrbit] = useState("-30deg 70deg auto");
   //---- slider slider
-  //---- slider slider
   const slides = [<Slide1 />, <Slide2 />, <Slide3 />, <Slide4 />];
   const [slideIndex, setSlideIndex] = useState(0);
 
@@ -25,9 +24,7 @@ const About = () => {
     setSlideIndex((index) => (index === 0 ? slides.length - 1 : index - 1));
   };
   //---- slider slider
-  //---- slider slider
 
-  //======== skull
   //======== skull
   const navigate = useNavigate();
   const downRoute = "/courses";
@@ -45,63 +42,73 @@ const About = () => {
   const targetVerticalAngleDown = 65;
   let intervalHorizontal, intervalVertical;
   //-------animacja czaszki---------
-  // Obsługa przewijania (scrolling)
+
+  // Zmienna do przechowywania początkowej pozycji dotyku
+  let touchStartY = 0;
+
+  // Obsługa scrolla
   const handleScrollAttempt = (e) => {
-    console.log(e.deltaY);
-
-    if (e.deltaY > 0) {
-      if (!isAnimating) {
-        setIsAnimating(true);
-        intervalHorizontal = setInterval(() => {
-          if (currentAngle < targetAngleDown) {
-            currentAngle += 1; // Zwiększamy kąt poziomy
-            setCameraOrbit(
-              `${currentAngle}deg ${currentVerticalAngle}deg auto`
-            );
-          } else {
-            clearInterval(intervalHorizontal); // Zatrzymujemy animację poziomą po osiągnięciu kąta 30
-          }
-        }, 100);
-        intervalVertical = setInterval(() => {
-          if (currentVerticalAngle > targetVerticalAngleDown) {
-            currentVerticalAngle += -0.2; // Zwiększamy kąt poziomy
-            setCameraOrbit(
-              `${currentAngle}deg ${currentVerticalAngle}deg auto`
-            );
-          } else {
-            clearInterval(intervalVertical); // Zatrzymujemy animację poziomą po osiągnięciu kąta 30
-          }
-        }, 100);
-
-        setDirection("down");
-      }
-    } else if (e.deltaY < 0) {
-      if (!isAnimating) {
-        setIsAnimating(true);
-        intervalHorizontal = setInterval(() => {
-          if (currentAngle < targetAngleUp) {
-            currentAngle += 1; // Zwiększamy kąt poziomy
-            setCameraOrbit(
-              `${currentAngle}deg ${currentVerticalAngle}deg auto`
-            );
-          } else {
-            clearInterval(intervalHorizontal); // Zatrzymujemy animację poziomą po osiągnięciu kąta 30
-          }
-        }, 50);
-
-        setDirection("up");
-      }
+    if (e.deltaY > 0 && !isAnimating) {
+      startAnimation("down");
+    } else if (e.deltaY < 0 && !isAnimating) {
+      startAnimation("up");
     }
   };
 
-  useEffect(() => {
-    window.addEventListener("wheel", handleScrollAttempt);
+  // Obsługa dotyku (swipe)
+  const handleTouchStart = (e) => {
+    touchStartY = e.touches[0].clientY; // Początkowa pozycja dotyku
+  };
 
-    return () => {
-      window.removeEventListener("wheel", handleScrollAttempt);
-    };
-  }, [isAnimating]);
+  const handleTouchMove = (e) => {
+    const touchEndY = e.touches[0].clientY;
 
+    // Swipe w dół
+    if (touchStartY - touchEndY > 50 && !isAnimating) {
+      startAnimation("down");
+    }
+    // Swipe w górę
+    else if (touchEndY - touchStartY > 50 && !isAnimating) {
+      startAnimation("up");
+    }
+  };
+
+  // Funkcja rozpoczynająca animację
+  const startAnimation = (dir) => {
+    setIsAnimating(true);
+    setDirection(dir);
+
+    if (dir === "down") {
+      intervalHorizontal = setInterval(() => {
+        if (currentAngle < targetAngleDown) {
+          currentAngle += 1; // Zwiększamy kąt poziomy
+          setCameraOrbit(`${currentAngle}deg ${currentVerticalAngle}deg auto`);
+        } else {
+          clearInterval(intervalHorizontal);
+        }
+      }, 100);
+
+      intervalVertical = setInterval(() => {
+        if (currentVerticalAngle > targetVerticalAngleDown) {
+          currentVerticalAngle += -0.2; // Zmniejszamy kąt pionowy
+          setCameraOrbit(`${currentAngle}deg ${currentVerticalAngle}deg auto`);
+        } else {
+          clearInterval(intervalVertical);
+        }
+      }, 100);
+    } else if (dir === "up") {
+      intervalHorizontal = setInterval(() => {
+        if (currentAngle < targetAngleUp) {
+          currentAngle += 1; // Zwiększamy kąt poziomy
+          setCameraOrbit(`${currentAngle}deg ${currentVerticalAngle}deg auto`);
+        } else {
+          clearInterval(intervalHorizontal);
+        }
+      }, 50);
+    }
+  };
+
+  // Funkcja wykonywana po zakończeniu animacji
   const handleAnimationComplete = () => {
     if (direction === "down") {
       navigate(downRoute, { replace: true });
@@ -112,7 +119,19 @@ const About = () => {
     setIsAnimating(false);
     setDirection(null);
   };
-  //======== skull
+
+  // Nasłuchiwanie zdarzeń scrolla i swipe
+  useEffect(() => {
+    window.addEventListener("wheel", handleScrollAttempt);
+    window.addEventListener("touchstart", handleTouchStart);
+    window.addEventListener("touchmove", handleTouchMove);
+
+    return () => {
+      window.removeEventListener("wheel", handleScrollAttempt);
+      window.removeEventListener("touchstart", handleTouchStart);
+      window.removeEventListener("touchmove", handleTouchMove);
+    };
+  }, [isAnimating]);
   //======== skull
 
   return (
