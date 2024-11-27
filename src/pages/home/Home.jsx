@@ -112,8 +112,8 @@ const Home = () => {
 
         <motion.h2
           animate={{
-            x: direction ? "-130%" : "0%", // Jeśli direction jest różne od null, przesuwamy o -100%, w przeciwnym wypadku ustawiamy 0%
-            scale: 1,
+            x: direction ? "-110%" : "0%", // Jeśli direction jest różne od null, przesuwamy o -100%, w przeciwnym wypadku ustawiamy 0%
+            scale: direction ? 0.1 : 1,
           }}
           initial={{ scale: 0.1, x: "70%" }} // Początkowa pozycja bez przesunięcia
           transition={{ duration: 2, ease: "easeInOut" }}
@@ -122,8 +122,8 @@ const Home = () => {
         </motion.h2>
         <motion.h2
           animate={{
-            x: direction ? "130%" : "0%", // Jeśli direction jest różne od null, przesuwamy o -100%, w przeciwnym wypadku ustawiamy 0%
-            scale: 1,
+            x: direction ? "110%" : "0%", // Jeśli direction jest różne od null, przesuwamy o -100%, w przeciwnym wypadku ustawiamy 0%
+            scale: direction ? 0.1 : 1,
           }}
           initial={{ scale: 0.1, x: "-70%" }} // Początkowa pozycja bez przesunięcia
           transition={{ duration: 2, ease: "easeInOut" }}

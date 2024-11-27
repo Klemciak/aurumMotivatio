@@ -9,7 +9,6 @@
   border-top: 1px solid $color-black;
   border-bottom: 1px solid $color-black;
   border-radius: 30px;
-  height: 550px;
 
   & h3 {
     font-family: $font-title;
@@ -45,6 +44,90 @@
     &::selection {
       background-color: $color-black;
       color: $color-gold;
+    }
+  }
+}
+@media (max-width: 760px), (max-height: 650px) {
+  .slide-style {
+    padding: 10px 15px;
+    h3 {
+      font-size: 40px;
+    }
+    h4 {
+      font-size: 30px;
+    }
+    p {
+      font-size: 27px;
+    }
+  }
+}
+@media (max-width: 700px), (max-height: 500px) {
+  .slide-style {
+    padding: 10px 12px;
+    h3 {
+      font-size: 37px;
+    }
+    h4 {
+      font-size: 28px;
+    }
+    p {
+      font-size: 24px;
+    }
+  }
+}
+@media (max-width: 500px), (max-height: 450px) {
+  .slide-style {
+    padding: 5px 7px;
+    h3 {
+      font-size: 30px;
+    }
+    h4 {
+      font-size: 22px;
+    }
+    p {
+      font-size: 20px;
+    }
+  }
+}
+@media (max-width: 402px), (max-height: 402px) {
+  .slide-style {
+    padding: 3px 3px;
+    h3 {
+      font-size: 25px;
+    }
+    h4 {
+      font-size: 20px;
+    }
+    p {
+      font-size: 16px;
+    }
+  }
+}
+@media (max-width: 300px), (max-height: 360px) {
+  .slide-style {
+    padding: 3px 3px;
+    h3 {
+      font-size: 22px;
+    }
+    h4 {
+      font-size: 17px;
+    }
+    p {
+      font-size: 12px;
+    }
+  }
+}
+@media (min-width: 700px) and (max-height: 400px) {
+  .slide-style {
+    padding: 5px 7px;
+    h3 {
+      font-size: 30px;
+    }
+    h4 {
+      font-size: 25px;
+    }
+    p {
+      font-size: 23px;
     }
   }
 }
