@@ -93,7 +93,7 @@ const Home = () => {
         } else {
           clearInterval(intervalHorizontal); // Zatrzymujemy animację poziomą po osiągnięciu kąta 30
         }
-      }, 50);
+      }, 10);
 
       // Animacja pionowa - animacja do kąta 70
       intervalVertical = setInterval(() => {
@@ -103,7 +103,7 @@ const Home = () => {
         } else {
           clearInterval(intervalVertical); // Zatrzymujemy animację pionową po osiągnięciu kąta 70
         }
-      }, 100);
+      }, 20);
     }
 
     // Czyszczenie interwałów po zakończeniu
@@ -135,7 +135,7 @@ const Home = () => {
             width: "100%",
           }}
           initial={{ width: 0, x: "0%" }} // Początkowa pozycja bez przesunięcia
-          transition={{ duration: 2.4 }}
+          transition={{ duration: 1 }}
           className="line"
         ></motion.span>
 
@@ -145,7 +145,7 @@ const Home = () => {
             scale: direction ? 0 : 1,
           }}
           initial={{ scale: 0, x: "70%" }} // Początkowa pozycja bez przesunięcia
-          transition={{ duration: 2, ease: "easeInOut" }}
+          transition={{ duration: 1, ease: "easeInOut" }}
         >
           AURUM
         </motion.h2>
@@ -155,7 +155,7 @@ const Home = () => {
             scale: direction ? 0 : 1,
           }}
           initial={{ scale: 0, x: "-70%" }} // Początkowa pozycja bez przesunięcia
-          transition={{ duration: 2, ease: "easeInOut" }}
+          transition={{ duration: 1, ease: "easeInOut" }}
         >
           MOTIVATIO
         </motion.h2>
@@ -166,7 +166,7 @@ const Home = () => {
             width: "100%",
           }}
           initial={{ width: 0, x: "0%" }} // Początkowa pozycja bez przesunięcia
-          transition={{ duration: 2.4 }}
+          transition={{ duration: 1 }}
           className="underline"
         ></motion.span>
       </div>
@@ -186,7 +186,7 @@ const Home = () => {
           opacity: 1,
         }}
         initial={{ x: "-50%" }}
-        transition={{ duration: 3.5, ease: "easeInOut" }}
+        transition={{ duration: 1, ease: "easeInOut" }}
         onAnimationComplete={handleAnimationComplete}
       >
         <model-viewer

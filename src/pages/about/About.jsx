@@ -86,7 +86,7 @@ const About = () => {
         } else {
           clearInterval(intervalHorizontal);
         }
-      }, 100);
+      }, 25);
 
       intervalVertical = setInterval(() => {
         if (currentVerticalAngle > targetVerticalAngleDown) {
@@ -95,7 +95,7 @@ const About = () => {
         } else {
           clearInterval(intervalVertical);
         }
-      }, 100);
+      }, 25);
     } else if (dir === "up") {
       intervalHorizontal = setInterval(() => {
         if (currentAngle < targetAngleUp) {
@@ -104,7 +104,7 @@ const About = () => {
         } else {
           clearInterval(intervalHorizontal);
         }
-      }, 50);
+      }, 10);
     }
   };
 
@@ -143,7 +143,7 @@ const About = () => {
           opacity: 1,
         }}
         initial={{ x: "-100%" }}
-        transition={{ duration: 3.5, ease: "easeInOut" }}
+        transition={{ duration: 1, ease: "easeInOut" }}
         onAnimationComplete={handleAnimationComplete}
       >
         <model-viewer
@@ -159,7 +159,7 @@ const About = () => {
           opacity: direction ? 0 : 1,
         }}
         initial={{ opacity: 0 }}
-        transition={{ duration: 1.5 }}
+        transition={{ duration: 1 }}
       >
         <h2>O nas</h2>
         <div className="slider">
@@ -196,7 +196,7 @@ const About = () => {
           x: direction ? "-100%" : "0%", // Jeśli direction jest różne od null, przesuwamy o -100%, w przeciwnym wypadku ustawiamy 0%
         }}
         initial={{ x: "120%" }} // Początkowa pozycja bez przesunięcia
-        transition={{ duration: 2 }}
+        transition={{ duration: 1 }}
       ></motion.span>
       <motion.span
         className="about-border-vertically"
@@ -204,7 +204,7 @@ const About = () => {
           y: direction ? "-100%" : "0%",
         }}
         initial={{ y: "120%" }}
-        transition={{ duration: 2 }}
+        transition={{ duration: 1 }}
       ></motion.span>
       <motion.div
         animate={{

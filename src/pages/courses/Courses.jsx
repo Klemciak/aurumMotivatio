@@ -62,7 +62,7 @@ const Courses = () => {
         } else {
           clearInterval(intervalHorizontal);
         }
-      }, 100);
+      }, 25);
 
       intervalVertical = setInterval(() => {
         if (currentVerticalAngle < targetVerticalAngleUp) {
@@ -71,7 +71,7 @@ const Courses = () => {
         } else {
           clearInterval(intervalVertical);
         }
-      }, 100);
+      }, 25);
     }
   };
 
@@ -216,7 +216,7 @@ const Courses = () => {
           opacity: direction ? 0 : 1,
         }}
         initial={{ opacity: 0 }}
-        transition={{ duration: 2 }}
+        transition={{ duration: 1 }}
       >
         Kursy
       </motion.h2>
@@ -229,7 +229,7 @@ const Courses = () => {
             x: direction ? "-100%" : 0,
           }}
           initial={{ opacity: 0, x: "-100%" }}
-          transition={{ duration: 2 }}
+          transition={{ duration: 1 }}
         >
           <h3>
             Kurs 18-karatowy <span>(7-dniowy)</span>
@@ -272,7 +272,7 @@ const Courses = () => {
             x: direction ? "100%" : 0,
           }}
           initial={{ opacity: 0, x: "100%" }}
-          transition={{ duration: 2 }}
+          transition={{ duration: 1 }}
         >
           <h3>
             Kurs 24-karatowy <span>(30-dniowy)</span>
@@ -315,7 +315,7 @@ const Courses = () => {
           opacity: 1,
         }}
         initial={{ x: "-50%" }}
-        transition={{ duration: 3.5, ease: "easeInOut" }}
+        transition={{ duration: 1, ease: "easeInOut" }}
         onAnimationComplete={handleAnimationComplete}
       >
         <model-viewer

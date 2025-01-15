@@ -21,6 +21,11 @@
   width: 650px;
   color: $color-black;
   filter: drop-shadow(5px 7px 2px rgba(0, 0, 0, 0.5));
+  backdrop-filter: blur(5px);
+  z-index: 11;
+  border-left: 5px solid $color-black;
+  border-right: 5px solid $color-black;
+  border-radius: 30px;
   h2 {
     padding: 0 15px 0 25px;
     font-family: $font-title;
@@ -46,7 +51,7 @@
     border: none;
     border-bottom: 3px solid $color-black;
     border-radius: 15px;
-    text-shadow: 2px 2px 0px $color-darkGold;
+    text-shadow: 2px 2px 0px $color-gold;
     cursor: pointer;
     transition: 0.5s;
     &:hover {
@@ -69,9 +74,7 @@
   font-family: $font-text;
   font-size: 20px;
   text-align: justify;
-  border-left: 3px solid $color-black;
-  border-right: 3px solid $color-black;
-  border-radius: 30px;
+
   -webkit-mask-image: linear-gradient(to top, transparent, rgb(0, 0, 0) 30%);
   mask-image: linear-gradient(to top, transparent, rgb(0, 0, 0) 30%);
   & h3 {
@@ -79,6 +82,13 @@
     font-size: 20px;
     padding: 15px 0 5px;
     text-decoration: underline;
+    text-align: left;
+    text-shadow: 1px 1px 0px $color-darkGold;
+  }
+  & p {
+    font-size: 22px;
+    font-weight: bolder;
+    text-shadow: 1px 1px 0px white;
   }
   & p,
   & h3 {
@@ -96,47 +106,38 @@
   width: 800px;
   z-index: 10;
   filter: drop-shadow(8px 12px 5px rgba(0, 0, 0, 0.7));
-  @media (max-width: 1440px) {
+  @media (max-width: 1100px) {
     width: 750px;
   }
-  @media (max-width: 1370px) {
-    width: 700px;
-  }
-  @media (max-width: 1270px) {
-    width: 650px;
-  }
-  @media (max-width: 1190px) {
-    width: 600px;
-  }
-  @media (max-width: 1100px) {
-    width: 550px;
-  }
-  @media (max-width: 1024px) {
-    width: 470px;
+  @media (max-width: 1000px) {
+    width: 675px;
   }
   @media (max-width: 900px) {
-    width: 400px;
+    width: 600px;
   }
-  @media (max-width: 785px) {
-    width: 380px;
+  @media (max-width: 800px) {
+    width: 525px;
   }
-  @media (max-width: 710px) {
-    width: 360px;
+  @media (max-width: 660px) {
+    width: 450px;
   }
   @media (max-width: 570px) {
-    width: 330px;
+    width: 375px;
   }
-  @media (max-width: 490px) {
+  @media (max-width: 470px) {
+    width: 325px;
+  }
+  @media (max-width: 390px) {
+    width: 275px;
+  }
+  @media (max-width: 350px) {
     width: 250px;
   }
-  @media (max-width: 400px) {
-    width: 220px;
+  @media (max-width: 325px) {
+    width: 225px;
   }
-  @media (max-width: 340px) {
+  @media (max-width: 285px) {
     width: 200px;
-  }
-  @media (max-width: 290px) {
-    width: 160px;
   }
 }
 
@@ -193,8 +194,7 @@
     position: absolute;
     top: 10px;
     right: 30px;
-    width: 80px;
-    height: 80px;
+    padding: 5px 15px;
     font-size: 50px;
     font-family: $font-text;
     font-weight: bold;
@@ -290,147 +290,125 @@
     }
   }
 }
-@media (max-width: 1280px), (max-height: 820px) {
-  .article-text {
-    width: 600px;
-    height: 650px;
-  }
-  .article-popup .text {
-    width: 900px;
-  }
-}
-@media (max-width: 1180px), (max-height: 770px) {
-  .article-text {
-    width: 550px;
-    height: 550px;
-    top: 42%;
-  }
-}
-@media (max-width: 1080px), (max-height: 650px) {
+
+@media (max-width: 1150px), (max-height: 830px) {
   .article-text {
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 20;
-    background-color: rgba(241, 224, 186, 0.8);
-    border-radius: 50px;
-
-    & .text {
-      border: none;
-    }
+    left: 1%;
+    height: 98%;
+    width: 70%;
   }
-  .article-popup .text {
-    width: 660px;
-    h3 {
-      font-size: 30px;
-    }
-    p {
-      font-size: 20px;
-    }
+  .article-border-horizontally {
+    display: none;
   }
-  .article-border-horizontally,
   .article-border-vertically {
     display: none;
   }
+  .article-popup .text {
+    width: 90%;
+    margin-bottom: 20px;
+  }
 }
-@media (max-width: 660px), (max-height: 570px) {
+@media (max-width: 900px), (max-height: 750px) {
   .article-text {
-    width: 500px;
-    height: 400px;
     h2 {
-      font-size: 35px;
+      font-size: 45px;
     }
     button {
-      font-size: 28px;
+      font-size: 30px;
     }
-    & .text {
-      h3 {
-        font-size: 17px;
-      }
-      p {
-        font-size: 17px;
-      }
+  }
+  .article-text .text {
+    h3 {
+      font-size: 18px;
+    }
+    p {
+      font-size: 18px;
     }
   }
   .article-popup {
     h2 {
-      font-size: 35px;
       margin-bottom: 20px;
     }
     button {
-      scale: 0.7;
-      top: -10px;
-      right: -10px;
+      top: 2px;
+      font-size: 40px;
     }
   }
   .article-popup .text {
-    width: 600px;
-    margin-bottom: 0;
-    padding: 5px 15px;
+    width: 98%;
+    margin-bottom: 10px;
     h3 {
-      font-size: 25px;
-    }
-    p {
-      font-size: 17px;
-    }
-  }
-}
-@media (max-width: 600px), (max-height: 420px) {
-  .article-text {
-    width: 400px;
-    height: 350px;
-    .text {
-      padding: 5px 15px;
-    }
-  }
-  .article-popup .text {
-    width: 500px;
-
-    h3 {
-      font-size: 22px;
-    }
-    p {
-      font-size: 16px;
-    }
-  }
-}
-@media (max-width: 500px), (max-height: 355px) {
-  .article-text {
-    width: 260px;
-    height: 300px;
-    h2 {
       font-size: 30px;
     }
-    button {
-      font-size: 25px;
+    p {
+      font-size: 21px;
+      padding: 7px 0 20px;
     }
-    & .text {
-      h3 {
-        font-size: 15px;
-      }
-      p {
-        font-size: 15px;
-      }
+  }
+}
+@media (max-width: 700px), (max-height: 550px) {
+  .article-text {
+    h2 {
+      font-size: 40px;
+    }
+    button {
+      font-size: 27px;
+    }
+  }
+  .article-text .text {
+    padding: 10px 20px;
+    h3 {
+      font-size: 16px;
+    }
+    p {
+      font-size: 15px;
+    }
+  }
+  .article-popup {
+    h2 {
+      margin-bottom: 10px;
+    }
+    button {
+      top: 1px;
+      right: 10px;
+      font-size: 30px;
     }
   }
   .article-popup .text {
-    width: 300px;
+    margin-bottom: 5px;
     h3 {
-      font-size: 17px;
+      font-size: 25px;
     }
     p {
-      font-size: 16px;
+      font-size: 18px;
+      padding: 5px 0 10px;
     }
   }
 }
-
-@media (max-width: 660px) and (min-height: 540px) {
+@media (max-width: 500px), (max-height: 420px) {
   .article-text {
-    height: 500px;
+    width: 80%;
   }
-}
-@media (max-width: 660px) and (min-height: 720px) {
-  .article-text {
-    height: 650px;
+  .article-popup {
+    h2 {
+      margin-bottom: 5px;
+    }
+    button {
+      right: 5px;
+      font-size: 25px;
+    }
+  }
+  .article-popup .text {
+    margin-bottom: 2px;
+    padding: 5px 12px;
+    h3 {
+      font-size: 20px;
+    }
+    p {
+      font-size: 18px;
+      padding: 2px 0 10px;
+      line-height: 18px;
+    }
   }
 }

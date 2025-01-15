@@ -68,7 +68,7 @@ const Article = () => {
         } else {
           clearInterval(intervalHorizontal);
         }
-      }, 50);
+      }, 10);
     } else if (dir === "up") {
       intervalHorizontal = setInterval(() => {
         if (currentAngle > targetAngleUp) {
@@ -77,7 +77,7 @@ const Article = () => {
         } else {
           clearInterval(intervalHorizontal);
         }
-      }, 100);
+      }, 25);
 
       intervalVertical = setInterval(() => {
         if (currentVerticalAngle > targetVerticalAngleUp) {
@@ -86,7 +86,7 @@ const Article = () => {
         } else {
           clearInterval(intervalVertical);
         }
-      }, 100);
+      }, 25);
     }
   };
 
@@ -128,7 +128,7 @@ const Article = () => {
             opacity: direction ? 0 : 1,
           }}
           initial={{ opacity: 0 }}
-          transition={{ duration: 3 }}
+          transition={{ duration: 1 }}
           className="article-text"
         >
           <h2>Złoto</h2>
@@ -278,7 +278,7 @@ const Article = () => {
             opacity: 1,
           }}
           initial={{ x: "0" }}
-          transition={{ duration: 3.5, ease: "easeInOut" }}
+          transition={{ duration: 1, ease: "easeInOut" }}
           onAnimationComplete={handleAnimationComplete}
         >
           <model-viewer
@@ -294,7 +294,7 @@ const Article = () => {
             x: direction ? "-100%" : "0%", // Jeśli direction jest różne od null, przesuwamy o -100%, w przeciwnym wypadku ustawiamy 0%
           }}
           initial={{ x: "120%" }} // Początkowa pozycja bez przesunięcia
-          transition={{ duration: 2 }}
+          transition={{ duration: 1 }}
         ></motion.span>
         <motion.span
           className="article-border-vertically"
@@ -302,7 +302,7 @@ const Article = () => {
             y: direction ? "-100%" : "0%",
           }}
           initial={{ y: "120%" }}
-          transition={{ duration: 2 }}
+          transition={{ duration: 1 }}
         ></motion.span>
 
         <motion.div
