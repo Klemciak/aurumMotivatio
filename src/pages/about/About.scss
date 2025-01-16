@@ -211,9 +211,9 @@
   }
   .slider {
     button:nth-child(1) {
-      filter: invert(1);
-      background-color: rgba(255, 255, 255, 0.8);
-      border: 3px solid rgba(0, 0, 0, 0.9);
+      filter: invert(1) drop-shadow(1px 1px 0px black)
+        drop-shadow(2px 2px 0px $color-gold);
+
       border-radius: 15px;
     }
   }
