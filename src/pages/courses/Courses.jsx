@@ -7,7 +7,7 @@ const Courses = () => {
   const [cameraOrbit, setCameraOrbit] = useState("0deg 65deg auto");
   const [expandedIndex7, setExpandedIndex7] = useState(null);
   const [expandedIndex30, setExpandedIndex30] = useState(null);
-
+  const phoneNumber = "123-456-789";
   //======== skull
   const navigate = useNavigate();
   const upRoute = "/about";
@@ -260,7 +260,11 @@ const Courses = () => {
             ))}
           </ul>
           <div className="join">
-            <button>Dołącz</button>
+            <button
+              onClick={() => (window.location.href = `tel:${phoneNumber}`)}
+            >
+              ZADZWOŃ
+            </button>
             <span className="price">499 zł</span>
           </div>
         </motion.div>
@@ -303,7 +307,11 @@ const Courses = () => {
             ))}
           </ul>
           <div className="join">
-            <button>Dołącz</button>
+            <button
+              onClick={() => (window.location.href = `tel:${phoneNumber}`)}
+            >
+              Dołącz
+            </button>
             <span className="price">1799 zł</span>
           </div>
         </motion.div>
