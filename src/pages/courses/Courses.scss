@@ -77,9 +77,10 @@
       transition: 0.3s;
       &:hover,
       &:hover > button {
-        color: $color-gold;
-        text-shadow: 2px 2px 0 $color-black;
+        color: $color-black;
+        filter: drop-shadow(1px 1px 2px $color-gold);
       }
+
       span {
         font-weight: bold;
         font-size: 20px;
@@ -301,7 +302,7 @@
     transform: translate(-50%, -50%);
     background-color: rgba(0, 0, 0, 0);
     border: none;
-    color: gold;
+    color: $color-gold;
     text-shadow: 2px 2px 0 $color-black;
   }
 }

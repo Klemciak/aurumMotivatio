@@ -310,7 +310,7 @@ const Courses = () => {
             <button
               onClick={() => (window.location.href = `tel:${phoneNumber}`)}
             >
-              Dołącz
+              ZADZWOŃ
             </button>
             <span className="price">1799 zł</span>
           </div>
